@@ -198,7 +198,6 @@ hi! link PreCondit        PreProc
 
 call s:h("Type",          {"fg": s:purple})
 hi! link StorageClass     Type
-hi! link Structure        Type
 hi! link Typedef          Type
 
 call s:h("Special",       {"fg": s:pink})
@@ -230,7 +229,8 @@ call s:h("Question",      {"fg": s:red})
 call s:h("StatusLine",    {"bg": s:bg_very_subtle})
 call s:h("Conceal",       {"fg": s:norm})
 call s:h("StatusLineNC",  {"bg": s:bg_very_subtle, "fg": s:medium_gray})
-call s:h("VertSplit",     {"bg": s:bg_very_subtle, "fg": s:bg_very_subtle})
+call s:h("VertSplit",     {"fg": s:bg_subtle})
+"call s:h("VertSplit",     {"bg": s:bg_very_subtle, "fg": s:bg_very_subtle})
 call s:h("Title",         {"fg": s:dark_blue})
 call s:h("Visual",        {"bg": s:visual})
 call s:h("VisualNOS",     {"bg": s:bg_subtle})
