@@ -97,7 +97,7 @@ let s:light_cyan      = { "gui": "#4FB8CC", "cterm": "14"  }
 let s:dark_green      = { "gui": "#10A778", "cterm": "2"   }
 let s:light_green     = { "gui": "#5FD7A7", "cterm": "10"  }
 
-let s:dark_purple     = { "gui": "#523C79", "cterm": "5"   }
+let s:dark_purple     = { "gui": "#5c23C79", "cterm": "5"   }
 let s:light_purple    = { "gui": "#6855DE", "cterm": "13"  }
 
 let s:yellow          = { "gui": "#F3E430", "cterm": "11"  }
@@ -113,10 +113,14 @@ if &background == "dark"
   let s:cyan            = s:light_cyan
   let s:green           = s:light_green
   let s:red             = s:light_red
-  let s:visual          = s:lighter_black
+  "let s:visual          = s:lighter_black
+  let s:visual_fg       = s:lighter_black
+  let s:visual_bg       = s:actual_white
+  let s:search_bg       = s:dark_cyan
 else
   let s:bg              = s:white
-  let s:bg_subtle       = s:light_gray
+  "let s:bg_subtle       = s:light_gray
+  let s:bg_subtle       = s:light_black
   let s:bg_very_subtle  = s:lighter_gray
   let s:norm            = s:light_black
   let s:norm_subtle     = s:lighter_black
@@ -124,8 +128,14 @@ else
   let s:cyan            = s:dark_cyan
   let s:green           = s:dark_green
   let s:red             = s:dark_red
-  let s:visual          = s:light_blue
+  "let s:visual          = s:light_blue
+  let s:visual_fg       = s:actual_white
+  let s:visual_bg       = s:lighter_black
+  let s:search_bg       = s:dark_blue
 endif
+
+"search
+let s:search_fg         = s:white
 
 if g:pencil_neutral_headings == 1
   let s:head_a         = s:norm
@@ -219,11 +229,15 @@ call s:h("SpecialKey",    {"fg": s:light_green})
 call s:h("NonText",       {"fg": s:bg_subtle})
 call s:h("Directory",     {"fg": s:dark_blue})
 call s:h("ErrorMsg",      {"fg": s:pink})
-call s:h("IncSearch",     {"bg": s:yellow, "fg": s:light_black})
-call s:h("Search",        {"bg": s:bg_subtle})
+"call s:h("IncSearch",     {"bg": s:yellow, "fg": s:light_black})
+"call s:h("Search",        {"bg": s:bg_subtle})
+call s:h("IncSearch",     {"bg": s:search_bg, "fg": s:search_fg})
+call s:h("Search",        {"bg": s:search_bg, "fg": s:search_fg})
 call s:h("MoreMsg",       {"fg": s:medium_gray, "gui": "bold", "cterm": "bold"})
 hi! link ModeMsg MoreMsg
+"call s:h("LineNr",        {"fg": s:bg_subtle})
 call s:h("LineNr",        {"fg": s:bg_subtle})
+
 call s:h("CursorLineNr",  {"fg": s:blue, "bg": s:bg_very_subtle})
 call s:h("Question",      {"fg": s:red})
 call s:h("StatusLine",    {"bg": s:bg_very_subtle})
@@ -232,7 +246,8 @@ call s:h("StatusLineNC",  {"bg": s:bg_very_subtle, "fg": s:medium_gray})
 call s:h("VertSplit",     {"fg": s:bg_subtle})
 "call s:h("VertSplit",     {"bg": s:bg_very_subtle, "fg": s:bg_very_subtle})
 call s:h("Title",         {"fg": s:dark_blue})
-call s:h("Visual",        {"bg": s:visual})
+"call s:h("Visual",        {"bg": s:visual})
+call s:h("Visual",        {"fg": s:visual_fg, "bg": s:visual_bg})
 call s:h("VisualNOS",     {"bg": s:bg_subtle})
 call s:h("WarningMsg",    {"fg": s:red})
 call s:h("WildMenu",      {"fg": s:bg, "bg": s:norm})
