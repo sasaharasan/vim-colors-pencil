@@ -82,23 +82,39 @@ else
   let s:lighter_gray  = { "gui": "#C6C6C6", "cterm": "251" }
 endif
 
-let s:pink            = { "gui": "#fb007a", "cterm": "9"   }
-let s:dark_red        = { "gui": "#C30771", "cterm": "1"   }
-let s:light_red       = { "gui": "#E32791", "cterm": "1"   }
-let s:orange          = { "gui": "#D75F5F", "cterm": "167" }
+"let s:pink            = { "gui": "#fb007a", "cterm": "9"   }
+"let s:dark_red        = { "gui": "#C30771", "cterm": "1"   }
+"let s:light_red       = { "gui": "#E32791", "cterm": "1"   }
+"let s:orange          = { "gui": "#D75F5F", "cterm": "167" }
 
-let s:darker_blue     = { "gui": "#005F87", "cterm": "18"  }
-let s:dark_blue       = { "gui": "#008EC4", "cterm": "4"   }
-let s:blue            = { "gui": "#20BBFC", "cterm": "12"  }
+let s:pink            = { "gui": "#fb007a", "cterm": "205" }
+let s:dark_red        = { "gui": "#C30771", "cterm": "197" }
+let s:light_red       = { "gui": "#E32791", "cterm": "197" }
+let s:orange          = { "gui": "#D75F5F", "cterm": "166" }
+
+"let s:darker_blue    = { "gui": "#005F87", "cterm": "18"  }
+"let s:dark_blue      = { "gui": "#008EC4", "cterm": "4"   }
+"let s:blue           = { "gui": "#20BBFC", "cterm": "12"  }
+"let s:light_blue     = { "gui": "#b6d6fd", "cterm": "153" }
+
+let s:darker_blue     = { "gui": "#005F87", "cterm": "31"  }
+let s:dark_blue       = { "gui": "#008EC4", "cterm": "38"   }
+let s:blue            = { "gui": "#20BBFC", "cterm": "51"  }
 let s:light_blue      = { "gui": "#b6d6fd", "cterm": "153" }
-let s:dark_cyan       = { "gui": "#20A5BA", "cterm": "6"   }
-let s:light_cyan      = { "gui": "#4FB8CC", "cterm": "14"  }
+
+"let s:dark_cyan       = { "gui": "#20A5BA", "cterm": "6"   }
+"let s:light_cyan      = { "gui": "#4FB8CC", "cterm": "14"  }
+let s:dark_cyan       = { "gui": "#20A5BA", "cterm": "75"   }
+let s:light_cyan      = { "gui": "#4FB8CC", "cterm": "81"  }
 
 let s:dark_green      = { "gui": "#10A778", "cterm": "2"   }
 let s:light_green     = { "gui": "#5FD7A7", "cterm": "10"  }
 
-let s:dark_purple     = { "gui": "#5c23C79", "cterm": "5"   }
-let s:light_purple    = { "gui": "#6855DE", "cterm": "13"  }
+"let s:dark_purple     = { "gui": "#5c23C7", "cterm": "5"   }
+"let s:light_purple    = { "gui": "#6855DE", "cterm": "13"  }
+
+let s:dark_purple     = { "gui": "#5c23C7", "cterm": "199"  }
+let s:light_purple    = { "gui": "#6855DE", "cterm": "198"  }
 
 let s:yellow          = { "gui": "#F3E430", "cterm": "11"  }
 let s:dark_yellow     = { "gui": "#A89C14", "cterm": "3"   }
@@ -116,7 +132,6 @@ if &background == "dark"
   "let s:visual          = s:lighter_black
   let s:visual_fg       = s:lighter_black
   let s:visual_bg       = s:actual_white
-  let s:search_bg       = s:dark_cyan
 else
   let s:bg              = s:white
   "let s:bg_subtle       = s:light_gray
@@ -130,11 +145,11 @@ else
   let s:red             = s:dark_red
   "let s:visual          = s:light_blue
   let s:visual_fg       = s:actual_white
-  let s:visual_bg       = s:lighter_black
-  let s:search_bg       = s:dark_blue
+  let s:visual_bg       = s:subtle_black
 endif
 
 "search
+let s:search_bg         = s:lighter_black
 let s:search_fg         = s:white
 
 if g:pencil_neutral_headings == 1
@@ -270,9 +285,14 @@ else
   call s:h("SpellRare",   {"cterm": s:sp_un, "fg": s:pink})
   call s:h("SpellLocal",  {"cterm": s:sp_un, "fg": s:dark_green})
 endif
-call s:h("Pmenu",         {"fg": s:norm, "bg": s:bg_subtle})
-call s:h("PmenuSel",      {"fg": s:norm, "bg": s:blue})
-call s:h("PmenuSbar",     {"fg": s:norm, "bg": s:bg_subtle})
+
+"call s:h("Pmenu",         {"fg": s:norm, "bg": s:bg_subtle})
+"call s:h("PmenuSel",      {"fg": s:norm, "bg": s:blue})
+"call s:h("PmenuSbar",     {"fg": s:norm, "bg": s:bg_subtle})
+call s:h("Pmenu",         {"fg": s:white, "bg": s:bg_subtle})
+call s:h("PmenuSel",      {"fg": s:visual_fg, "bg": s:visual_bg})
+call s:h("PmenuSbar",     {"fg": s:white, "bg": s:bg_subtle})
+
 call s:h("PmenuThumb",    {"fg": s:norm, "bg": s:bg_subtle})
 call s:h("TabLine",       {"fg": s:norm, "bg": s:bg_very_subtle})
 call s:h("TabLineSel",    {"fg": s:blue, "bg": s:bg_subtle, "gui": "bold", "cterm": "bold"})
@@ -334,8 +354,8 @@ call s:h("markdownUrl",                 {"fg": s:medium_gray, "gui": "underline"
 call s:h("markdownUrlDelimiter",        {"fg": s:medium_gray})
 call s:h("markdownUrlTitle",            {"fg": s:norm})
 call s:h("markdownUrlTitleDelimiter",   {"fg": s:medium_gray})
-call s:h("markdownCode",                {"fg": s:norm, "bg": s:code_bg})
-call s:h("markdownCodeDelimiter",       {"fg": s:norm, "bg": s:code_bg})
+"call s:h("markdownCode",                {"fg": s:norm, "bg": s:code_bg})
+"call s:h("markdownCodeDelimiter",       {"fg": s:norm, "bg": s:code_bg})
 
 " plasticboy/vim-markdown
 call s:h("mkdBlockQuote",               {"fg": s:norm})
@@ -348,8 +368,8 @@ call s:h("mkdListItem",                 {"fg": s:norm})
 call s:h("mkdNonListItemBlock",         {"fg": s:norm})  " bug in syntax?
 call s:h("mkdRule",                     {"fg": s:norm})
 call s:h("mkdUrl",                      {"fg": s:medium_gray, "gui": "underline", "cterm": "underline"})
-call s:h("mkdCode",                     {"fg": s:norm, "bg": s:code_bg})
-call s:h("mkdIndentCode",               {"fg": s:norm, "bg": s:code_bg})
+"call s:h("mkdCode",                     {"fg": s:norm, "bg": s:code_bg})
+"call s:h("mkdIndentCode",               {"fg": s:norm, "bg": s:code_bg})
 
 " gabrielelana/vim-markdown
 call s:h("markdownBlockquoteDelimiter", {"fg": s:norm})
@@ -360,8 +380,8 @@ call s:h("markdownLinkText",            {"fg": s:norm})
 call s:h("markdownLinkTextContainer",   {"fg": s:medium_gray})
 call s:h("markdownLinkUrl",             {"fg": s:medium_gray, "gui": "underline", "cterm": "underline"})
 call s:h("markdownLinkUrlContainer",    {"fg": s:medium_gray})
-call s:h("markdownFencedCodeBlock",     {"fg": s:norm, "bg": s:code_bg})
-call s:h("markdownInlineCode",          {"fg": s:norm, "bg": s:code_bg})
+"call s:h("markdownFencedCodeBlock",     {"fg": s:norm, "bg": s:code_bg})
+"call s:h("markdownInlineCode",          {"fg": s:norm, "bg": s:code_bg})
 
 " mattly/vim-markdown-enhancements
 call s:h("mmdFootnoteDelimiter",        {"fg": s:medium_gray})
